@@ -4,4 +4,12 @@
     {
         Guid GetGuid();
     }
+
+    public class DefaultGuidProvider: IGuidProvider
+    {
+      public  Guid GetGuid()
+        {
+            return Guid.NewGuid();
+        }
+    }
 }

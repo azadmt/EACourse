@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdeManagement.Domain", "Or
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applicartion", "Applicartion", "{C85B496F-1265-4F6A-9A3F-F98A69A5619C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.ApplicationService", "OrderManagement.ApplicationService\OrderManagement.ApplicationService.csproj", "{2B0DA1EC-ADA6-4EBD-93E0-E15AB0F69608}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagement.ApplicationService", "OrderManagement.ApplicationService\OrderManagement.ApplicationService.csproj", "{2B0DA1EC-ADA6-4EBD-93E0-E15AB0F69608}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{ADD85216-8C91-4520-97EA-5FB9B881EFDA}"
 EndProject
@@ -23,15 +23,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-Framework", "0-Framework", "{F94292BD-2DE9-4E22-8C18-67E5A0381625}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Core", "Framework.Core\Framework.Core.csproj", "{73B61FE8-A8A9-43FE-8722-4845BE7159FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Core", "Framework.Core\Framework.Core.csproj", "{73B61FE8-A8A9-43FE-8722-4845BE7159FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.DomainContract", "OrderManagement.DomainContract\OrderManagement.DomainContract.csproj", "{674EEE0F-14E8-4521-B49F-5F005E989051}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagement.DomainContract", "OrderManagement.DomainContract\OrderManagement.DomainContract.csproj", "{674EEE0F-14E8-4521-B49F-5F005E989051}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{19020F71-7408-4A9B-A12F-B8A8084F0C31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Api", "OrderManagement.Api\OrderManagement.Api.csproj", "{03D87D25-04FF-4884-96CA-AEB61DAFC29C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagement.Api", "OrderManagement.Api\OrderManagement.Api.csproj", "{03D87D25-04FF-4884-96CA-AEB61DAFC29C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Test", "OrderManagement.Test\OrderManagement.Test.csproj", "{F3A4AFD6-DE38-4392-8208-C5F485E3E6DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagement.Test", "OrderManagement.Test\OrderManagement.Test.csproj", "{F3A4AFD6-DE38-4392-8208-C5F485E3E6DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Persistence.Ef", "OrderManagement.Persistence.Ef\OrderManagement.Persistence.Ef.csproj", "{CBE9E7E6-151F-48DA-9712-1086AC95FF5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{F3A4AFD6-DE38-4392-8208-C5F485E3E6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3A4AFD6-DE38-4392-8208-C5F485E3E6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3A4AFD6-DE38-4392-8208-C5F485E3E6DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBE9E7E6-151F-48DA-9712-1086AC95FF5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBE9E7E6-151F-48DA-9712-1086AC95FF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBE9E7E6-151F-48DA-9712-1086AC95FF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBE9E7E6-151F-48DA-9712-1086AC95FF5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +84,7 @@ Global
 		{19020F71-7408-4A9B-A12F-B8A8084F0C31} = {7857AE85-DA4A-4B2F-BDAC-BA7DA876C0D9}
 		{03D87D25-04FF-4884-96CA-AEB61DAFC29C} = {19020F71-7408-4A9B-A12F-B8A8084F0C31}
 		{F3A4AFD6-DE38-4392-8208-C5F485E3E6DD} = {ADD85216-8C91-4520-97EA-5FB9B881EFDA}
+		{CBE9E7E6-151F-48DA-9712-1086AC95FF5D} = {8C2F6087-E58C-4C0D-93E3-CFBCF1F0E678}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F5E55967-1254-486E-B661-517FD7492B59}

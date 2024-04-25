@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Framework.Core.Messeaging;
 
 namespace OrderManagement.DomainContract
 {
-    public class CreateOrderDto
+    public class CreateOrderCommand:ICommand
     {
         public Guid CustomerId { get; set; }
 
         public List<OrderItemDto> Items { get; set; }
+
+        public bool Validate()
+        {
+            return true;
+        }
     }
 }

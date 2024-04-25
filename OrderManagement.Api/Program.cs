@@ -1,3 +1,10 @@
+using Framework.Core.Domain;
+using Framework.Core.Messeaging;
+using OrdeManagement.Domain.OrderAggregate;
+using OrderManagement.ApplicationService.OrderManagement.UseCase;
+using OrderManagement.DomainContract;
+using OrderManagement.Persistence.Ef;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +14,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<ICommandHandler<ChangeOrderOrderItemsCommand>, ChangeOrderOrderItemsCommandHandler>();
+builder.Services.AddScoped<ICommandHandler<CreateOrderCommand>, CreateOrderCommandHandler>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IGuidProvider, DefaultGuidProvider>();
+builder.Services.AddScoped<ICommandBus, CommandBus>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

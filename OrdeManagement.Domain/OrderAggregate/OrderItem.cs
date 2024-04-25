@@ -11,14 +11,14 @@ namespace OrdeManagement.Domain
             var orderItem = new OrderItem();
             orderItem.ProductId = orderItemDto.ProductId;
             orderItem.Quantity = orderItemDto.Quantity;
-            orderItem.UnitPrice = orderItemDto.UnitPrice;
+            orderItem.UnitPrice = new Money(orderItemDto.UnitPrice);
             //orderItem.Id = guidProvider.GetGuid();
             orderItem.Id = orderItemId;
 
             return orderItem;
         }
         public Guid ProductId { get; private set; }
-        public decimal UnitPrice { get; private set; }
+        public Money UnitPrice { get; private set; }
         public uint Quantity { get; private set; }
     }
 }
