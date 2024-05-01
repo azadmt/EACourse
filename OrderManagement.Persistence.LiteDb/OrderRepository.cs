@@ -6,21 +6,18 @@ using System.Reflection;
 
 namespace OrderManagement.Persistence.LiteDb
 {
-    public class OrderRepository : IOrderRepository
+    public class OrderRepositoryLiteDbImp : IOrderRepository
     {
         private ILiteCollection<Order> _ordersCollection;
 
-        public OrderRepository()
+        public OrderRepositoryLiteDbImp()
         {
-            using (var db = new LiteDatabase($@"{Assembly.GetExecutingAssembly()}\OrderManagement_db.db"))
-            {
-                // Get a collection (or create, if doesn't exist)
-                _ordersCollection = db.GetCollection<Order>("Orders");
-            }
         }
 
         public Order Get(Guid id)
         {
+            using var LiteDB = GetCollection();
+            _ordersCollection = LiteDB.GetCollection<Order>("Orders");
             return _ordersCollection
                   .Query()
                   .Where(x => x.Id == id)
@@ -29,12 +26,21 @@ namespace OrderManagement.Persistence.LiteDb
 
         public void Save(Order model)
         {
+            using var LiteDB = GetCollection();
+            _ordersCollection = LiteDB.GetCollection<Order>("Orders");
             _ordersCollection.Insert(model);
         }
 
         public void Update(Order model)
         {
+            using var LiteDB = GetCollection();
+            _ordersCollection = LiteDB.GetCollection<Order>("Orders");
             _ordersCollection.Update(model);
+        }
+
+        private LiteDatabase GetCollection()
+        {
+            return new LiteDatabase($@"{AppContext.BaseDirectory}\OrderManagement_db.db");//get from config
         }
     }
 }

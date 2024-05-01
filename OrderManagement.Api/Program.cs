@@ -5,6 +5,7 @@ using OrdeManagement.Domain.OrderAggregate;
 using OrderManagement.ApplicationService.OrderManagement.UseCase;
 using OrderManagement.DomainContract;
 using OrderManagement.Persistence.Ef;
+using OrderManagement.Persistence.LiteDb;
 
 var builder = WebApplication.CreateBuilder(args);
 
