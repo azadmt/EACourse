@@ -16,23 +16,22 @@ namespace OrderManagement.Persistence.Ef.Mapping
             builder.HasKey(x => x.Id);
             builder.Property(x => x.CustomerId).IsRequired();
             builder.Property(x => x.OrderDate).IsRequired();
-            builder.OwnsOne(x => x.Total, b => {
-                b.Property(x => x.Value);
-              
+            builder.OwnsOne(x => x.Total, b =>
+            {
+                b.Property(x => x.Value).HasColumnName("TotalPrice");
             });
-
-            //builder.OwnsMany(x => x.OrderItems);
-
 
             builder.OwnsMany(x => x.OrderItems, oi =>
             {
-               // oi.ToTable("OrderItems").HasKey(x => x.Id);
                 oi.Property(p => p.Id).IsRequired().ValueGeneratedNever();
                 oi.WithOwner().HasForeignKey("OrderId");
                 oi.Property(x => x.ProductId);
                 oi.Property(x => x.Quantity);
-                oi.Property(x => x.Quantity);
+                oi.OwnsOne(x => x.UnitPrice);
             });
+
+            builder.Metadata.FindNavigation(nameof(Order.OrderItems))
+           .SetPropertyAccessMode(PropertyAccessMode.Field);
         }
     }
 }

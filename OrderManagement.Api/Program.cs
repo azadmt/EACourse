@@ -1,5 +1,6 @@
 using Framework.Core.Domain;
 using Framework.Core.Messeaging;
+using Microsoft.EntityFrameworkCore;
 using OrdeManagement.Domain.OrderAggregate;
 using OrderManagement.ApplicationService.OrderManagement.UseCase;
 using OrderManagement.DomainContract;
@@ -9,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services
+ .AddDbContext<OrderManagementDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("default")));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
