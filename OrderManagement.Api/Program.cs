@@ -5,14 +5,13 @@ using OrdeManagement.Domain.OrderAggregate;
 using OrderManagement.ApplicationService.OrderManagement.UseCase;
 using OrderManagement.DomainContract;
 using OrderManagement.Persistence.Ef;
-using OrderManagement.Persistence.LiteDb;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services
- .AddDbContext<OrderManagementDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("default")));
+ .AddDbContext<OrderManagementDbContext>(opt => opt.UseInMemoryDatabase("OrderManagementDbContext"));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

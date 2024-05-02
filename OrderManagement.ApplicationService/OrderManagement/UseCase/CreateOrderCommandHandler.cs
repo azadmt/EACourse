@@ -11,7 +11,7 @@ namespace OrderManagement.ApplicationService.OrderManagement.UseCase
     {
         private IOrderRepository _orderRepository;
         private readonly IGuidProvider guidProvider;
-
+        private IEventBus eventBus;
         public CreateOrderCommandHandler(IOrderRepository orderRepository, IGuidProvider guidProvider)
         {
             _orderRepository = orderRepository;
@@ -24,7 +24,12 @@ namespace OrderManagement.ApplicationService.OrderManagement.UseCase
             var order = OrdeManagement.Domain.Order.CreateOrder(command, guidProvider);
 
             _orderRepository.Save(order);
-            //publish changes
+            var changes = order.GetChanges();
+            foreach (var @event in changes)
+            {
+                eventBus.Publish(@event);//OutBox Pattern
+            }
+
         }
     }
 
