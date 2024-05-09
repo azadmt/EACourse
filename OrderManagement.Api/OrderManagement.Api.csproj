@@ -19,7 +19,7 @@
     <ProjectReference Include="..\Framework.Messaging.MassTransit\Framework.Messaging.MassTransit.csproj" />
     <ProjectReference Include="..\OrdeManagement.Domain\OrderManagement.Domain.csproj" />
     <ProjectReference Include="..\OrderManagement.ApplicationService\OrderManagement.ApplicationService.csproj" />
-    <ProjectReference Include="..\OrderManagement.DomainContract\OrderManagement.DomainContract.csproj" />
+    <ProjectReference Include="..\OrderManagement.Contract\OrderManagement.Contract.csproj" />
     <ProjectReference Include="..\OrderManagement.Persistence.Ef\OrderManagement.Persistence.Ef.csproj" />
     <ProjectReference Include="..\OrderManagement.Persistence.LiteDb\OrderManagement.Persistence.LiteDb.csproj" />
   </ItemGroup>

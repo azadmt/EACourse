@@ -1,5 +1,4 @@
-﻿using OrderManagement.Domain;
-using OrderManagement.Domain.OrderAggregate;
+﻿using OrderManagement.Domain.OrderAggregate;
 using System;
 using System.Collections.Generic;
 using System.Linq;

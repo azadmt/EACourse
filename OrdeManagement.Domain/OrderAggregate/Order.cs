@@ -20,6 +20,7 @@ namespace OrderManagement.Domain.OrderAggregate
                 new OrderCreatedEvent(
                     order.Id,
                     order.CustomerId,
+                    order.Total.Value,
                     createOrderDto
                 .Items.AsReadOnly()));
             return order;

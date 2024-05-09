@@ -26,11 +26,11 @@ namespace OrderManagement.ApplicationService.OrderManagement.UseCase
             var order = Order.CreateOrder(command, guidProvider);
 
             _orderRepository.Save(order);
-            var changes = order.GetChanges();
-            foreach (var @event in changes)
-            {
-                eventBus.Publish(@event);//OutBox Pattern
-            }
+            //var changes = order.GetChanges();
+            //foreach (var @event in changes)
+            //{
+            //    eventBus.Publish(@event);//OutBox Pattern
+            //}
         }
     }
 }

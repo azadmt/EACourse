@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Framework.Persistence.EF;
+using Microsoft.EntityFrameworkCore;
 using OrderManagement.Domain.OrderAggregate;
 
 namespace OrderManagement.Persistence.Ef
 {
-    public class OrderManagementDbContext : DbContext
+    public class OrderManagementDbContext : ApplicationDbContext
     {
         public DbSet<Order> Orders { get; set; }
 

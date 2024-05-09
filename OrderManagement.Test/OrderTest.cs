@@ -17,7 +17,7 @@ namespace OrderManagement.Test
         {
             var orderRepo = new OrderRepositoryFake();
             var orderId = Guid.NewGuid();
-            var sut = new CreateOrderCommandHandler(orderRepo, new GuidProviderFake(orderId));
+            var sut = new CreateOrderCommandHandler(orderRepo, new GuidProviderFake(orderId), null);
             var customerId = Guid.NewGuid();
             var orderItems = new List<OrderItemDto>();
             orderItems.Add(new OrderItemDto() { ProductId = Guid.NewGuid(), Quantity = 10, UnitPrice = 5000 });
