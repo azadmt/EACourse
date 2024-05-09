@@ -18,11 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OrdeManagement.Domain\OrdeManagement.Domain.csproj" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <ProjectReference Include="..\OrdeManagement.Domain\OrderManagement.Domain.csproj" />
   </ItemGroup>
 
 </Project>

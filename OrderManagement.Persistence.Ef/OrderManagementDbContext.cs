@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OrdeManagement.Domain;
+using OrderManagement.Domain.OrderAggregate;
 
 namespace OrderManagement.Persistence.Ef
 {

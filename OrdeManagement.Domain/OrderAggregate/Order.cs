@@ -2,11 +2,11 @@
 using OrderManagement.DomainContract;
 using OrderManagement.DomainContract.Event;
 
-namespace OrdeManagement.Domain
+namespace OrderManagement.Domain.OrderAggregate
 {
     public class Order : AggregateRoot<Guid>
     {
-        private decimal maxLimitation = 1000000;
+        private decimal maxLimitation = 1000000000;//TODO move to Config
 
         public static Order CreateOrder(CreateOrderCommand createOrderDto, IGuidProvider guidProvider)
         {
@@ -14,10 +14,7 @@ namespace OrdeManagement.Domain
 
             order.Id = guidProvider.GetGuid();
             order.CustomerId = createOrderDto.CustomerId;
-            order._orderItems = createOrderDto
-                .Items
-                .Select(x => OrderItem.CreateOrdeItem(x, Guid.NewGuid()))
-                .ToList();
+            order.AddOrderItems(createOrderDto.Items);
 
             order.AddChanges(
                 new OrderCreatedEvent(
@@ -28,7 +25,7 @@ namespace OrdeManagement.Domain
             return order;
         }
 
-        private List<OrderItem> _orderItems;
+        private List<OrderItem> _orderItems = new();
         public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
         public DateTime OrderDate { get; private set; }
         public Guid CustomerId { get; private set; }
@@ -38,12 +35,13 @@ namespace OrdeManagement.Domain
         {
             foreach (var item in orderItemDtos)
             {
-                if (orderItemDtos.Sum(x => x.UnitPrice) + (item.UnitPrice * item.Quantity) > maxLimitation)
+                if (_orderItems.Sum(x => (decimal)x.UnitPrice) + (item.UnitPrice * item.Quantity) > maxLimitation)
                 {
-                    throw new Exception();
+                    throw new OrderPriceThresholdViolationException();
                 }
                 _orderItems.Add(OrderItem.CreateOrdeItem(item, Guid.NewGuid()));
             }
+            Total = _orderItems.Sum(x => x.UnitPrice * x.Quantity);
         }
     }
 }

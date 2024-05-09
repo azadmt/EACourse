@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,9 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Framework.Core\Framework.Core.csproj" />
-    <ProjectReference Include="..\OrdeManagement.Domain\OrderManagement.Domain.csproj" />
-    <ProjectReference Include="..\OrderManagement.DomainContract\OrderManagement.DomainContract.csproj" />
   </ItemGroup>
 
 </Project>

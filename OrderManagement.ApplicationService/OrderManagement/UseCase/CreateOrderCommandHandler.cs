@@ -1,6 +1,6 @@
 ﻿using Framework.Core.Domain;
 using Framework.Core.Messeaging;
-using OrdeManagement.Domain.OrderAggregate;
+using OrderManagement.Domain.OrderAggregate;
 using OrderManagement.DomainContract;
 
 namespace OrderManagement.ApplicationService.OrderManagement.UseCase
@@ -12,16 +12,18 @@ namespace OrderManagement.ApplicationService.OrderManagement.UseCase
         private IOrderRepository _orderRepository;
         private readonly IGuidProvider guidProvider;
         private IEventBus eventBus;
-        public CreateOrderCommandHandler(IOrderRepository orderRepository, IGuidProvider guidProvider)
+
+        public CreateOrderCommandHandler(IOrderRepository orderRepository, IGuidProvider guidProvider, IEventBus eventBus)
         {
             _orderRepository = orderRepository;
             this.guidProvider = guidProvider;
+            this.eventBus = eventBus;
         }
 
         public void Handle(CreateOrderCommand command)
         {
             //validate dto
-            var order = OrdeManagement.Domain.Order.CreateOrder(command, guidProvider);
+            var order = Order.CreateOrder(command, guidProvider);
 
             _orderRepository.Save(order);
             var changes = order.GetChanges();
@@ -29,8 +31,6 @@ namespace OrderManagement.ApplicationService.OrderManagement.UseCase
             {
                 eventBus.Publish(@event);//OutBox Pattern
             }
-
         }
     }
-
 }

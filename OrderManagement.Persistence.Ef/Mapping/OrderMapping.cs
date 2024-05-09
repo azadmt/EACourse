@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using OrdeManagement.Domain;
+using OrderManagement.Domain.OrderAggregate;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrderManagement.Domain.OrderAggregate
 {
-    public interface IOrderRepository
+    public class OrderPriceThresholdViolationException : Exception
     {
-        Order Get(Guid id);
-
-        void Save(Order model);
-
-        void Update(Order model);
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Framework.Core.Domain;
-using OrdeManagement.Domain;
+using OrderManagement.Domain.OrderAggregate;
 using OrderManagement.DomainContract;
 using System;
 using System.Collections.Generic;

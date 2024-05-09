@@ -1,5 +1,5 @@
 ﻿using Framework.Core.Messeaging;
-using OrdeManagement.Domain.OrderAggregate;
+using OrderManagement.Domain.OrderAggregate;
 using OrderManagement.DomainContract;
 using System;
 using System.Collections.Generic;

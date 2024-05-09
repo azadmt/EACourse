@@ -1,4 +1,4 @@
-using OrdeManagement.Domain;
+using OrderManagement.Domain;
 using OrderManagement.ApplicationService;
 using OrderManagement.ApplicationService.OrderManagement.UseCase;
 using OrderManagement.DomainContract;
@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using OrderManagement.Domain.OrderAggregate;
 
 namespace OrderManagement.Test
 {

@@ -1,6 +1,6 @@
 ﻿using LiteDB;
-using OrdeManagement.Domain;
-using OrdeManagement.Domain.OrderAggregate;
+using OrderManagement.Domain;
+using OrderManagement.Domain.OrderAggregate;
 using System;
 using System.Reflection;
 

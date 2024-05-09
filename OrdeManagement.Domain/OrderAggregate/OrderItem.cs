@@ -1,7 +1,7 @@
 ﻿using Framework.Core.Domain;
 using OrderManagement.DomainContract;
 
-namespace OrdeManagement.Domain
+namespace OrderManagement.Domain.OrderAggregate
 {
     public class OrderItem : Entity<Guid>
     {
@@ -21,5 +21,10 @@ namespace OrdeManagement.Domain
 
         public Money UnitPrice { get; private set; }
         public uint Quantity { get; private set; }
+
+        public void SetQuantity(uint q)
+        {
+            Quantity = q;
+        }
     }
 }

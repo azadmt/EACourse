@@ -22,7 +22,7 @@ namespace OrderManagement.Persistence.Ef.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("OrdeManagement.Domain.Order", b =>
+            modelBuilder.Entity("OrderManagement.Domain.Order", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,9 +39,9 @@ namespace OrderManagement.Persistence.Ef.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("OrdeManagement.Domain.Order", b =>
+            modelBuilder.Entity("OrderManagement.Domain.Order", b =>
                 {
-                    b.OwnsOne("OrdeManagement.Domain.Money", "Total", b1 =>
+                    b.OwnsOne("OrderManagement.Domain.Money", "Total", b1 =>
                         {
                             b1.Property<Guid>("OrderId")
                                 .HasColumnType("uniqueidentifier");
@@ -58,7 +58,7 @@ namespace OrderManagement.Persistence.Ef.Migrations
                                 .HasForeignKey("OrderId");
                         });
 
-                    b.OwnsMany("OrdeManagement.Domain.OrderItem", "OrderItems", b1 =>
+                    b.OwnsMany("OrderManagement.Domain.OrderItem", "OrderItems", b1 =>
                         {
                             b1.Property<Guid>("OrderId")
                                 .HasColumnType("uniqueidentifier");
@@ -79,7 +79,7 @@ namespace OrderManagement.Persistence.Ef.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("OrderId");
 
-                            b1.OwnsOne("OrdeManagement.Domain.Money", "UnitPrice", b2 =>
+                            b1.OwnsOne("OrderManagement.Domain.Money", "UnitPrice", b2 =>
                                 {
                                     b2.Property<Guid>("OrderItemOrderId")
                                         .HasColumnType("uniqueidentifier");
