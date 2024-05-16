@@ -22,7 +22,7 @@ namespace OrderManagement.OutboxPublisher
                          {
                              x.UsingRabbitMq((context, cfg) =>
                              {
-                                 cfg.Host("localhost", "ea", h =>
+                                 cfg.Host("localhost", "ea1403", h =>
                                  {
                                      h.Username("guest");
                                      h.Password("guest");
