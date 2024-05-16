@@ -13,7 +13,7 @@ namespace Framework.Messaging.MassTransit
             _bus = bus;
         }
 
-        public void Publish<TEvent>(TEvent @event) where TEvent : IDomainEvent
+        public void Publish<TEvent>(TEvent @event)
         {
             _bus.Publish(@event).GetAwaiter().GetResult();
         }

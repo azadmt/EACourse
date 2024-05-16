@@ -11,9 +11,4 @@ namespace Framework.Core.Messeaging
     {
         void Send<TCommand>(TCommand command) where TCommand : ICommand;
     }
-
-    public interface IEventBus
-    {
-        void Publish<TEvent>(TEvent @event) where TEvent : IDomainEvent;
-    }
 }
