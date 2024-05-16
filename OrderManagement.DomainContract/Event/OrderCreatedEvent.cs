@@ -10,14 +10,22 @@ namespace OrderManagement.DomainContract.Event
 {
     public class OrderCreatedEvent : IDomainEvent
     {
-        public OrderCreatedEvent(Guid orderId, Guid customerId, ReadOnlyCollection<OrderItemDto> orderItems)
+        public OrderCreatedEvent()
         {
+
+        }
+        public OrderCreatedEvent(Guid orderId, Guid customerId, decimal total, ReadOnlyCollection<OrderItemDto> orderItems)
+        {
+            Id = Guid.NewGuid();
             OrderId = orderId;
             CustomerId = customerId;
+            Total = total;
             OrderItems = orderItems;
         }
         public Guid OrderId { get; private set; }
-        public Guid CustomerId{ get; private set; }
-        public ReadOnlyCollection<OrderItemDto> OrderItems{ get; private set; }
+        public Guid CustomerId { get; private set; }
+        public decimal Total { get; }
+        public ReadOnlyCollection<OrderItemDto> OrderItems { get; private set; }
+        public Guid Id { get; }
     }
 }

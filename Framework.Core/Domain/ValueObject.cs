@@ -1,44 +1,42 @@
 ﻿namespace Framework.Core.Domain
 {
-    public abstract class ValueObject<T> where T : ValueObject<T>
+    public abstract class ValueObject
     {
-        protected abstract IEnumerable<object> GetAttributesToIncludeInEqualityCheck();
+        //protected ValueObject()
+        //{ }
 
-        public virtual bool IsEqual(ValueObject<T> other)
+        public override bool Equals(object obj)
         {
-            if (other == null)
-            {
-                return false;
-            }
-            return GetAttributesToIncludeInEqualityCheck().SequenceEqual(other.GetAttributesToIncludeInEqualityCheck());
+            if (obj == null) return false;
+            if (obj as ValueObject is null) return false;
+            return IsEqual((ValueObject)obj);
         }
-
-        public static bool operator ==(ValueObject<T> left, ValueObject<T> right)
-        {
-            return Equals(left, right);
-        }
-
-        public static bool operator !=(ValueObject<T> left, ValueObject<T> right)
-        {
-            return !(left == right);
-        }
-
-
 
         public override int GetHashCode()
         {
             int hash = 0;
-            foreach (var obj in this.GetAttributesToIncludeInEqualityCheck())
-                hash = hash + (obj == null ? 0 : obj.GetHashCode());
-
+            foreach (var item in GetAttributesToIncludeInEqualityCheck())
+            {
+                hash += item.GetHashCode();
+            }
             return hash;
         }
 
-        public override bool Equals(object obj)
+        private bool IsEqual(ValueObject valueObject)
         {
-            return IsEqual((ValueObject<T>)obj);
+            return GetAttributesToIncludeInEqualityCheck().SequenceEqual(valueObject.GetAttributesToIncludeInEqualityCheck());
         }
 
+        public static bool operator ==(ValueObject left, ValueObject right)
+        {
+            return left.Equals(right);
+        }
 
+        public static bool operator !=(ValueObject left, ValueObject right)
+        {
+            return !left.Equals(right);
+        }
+
+        protected abstract IEnumerable<object> GetAttributesToIncludeInEqualityCheck();
     }
 }

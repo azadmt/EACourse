@@ -26,7 +26,7 @@ namespace Framework.Core.Domain
         }
     }
 
-    public class AggregateRoot<TKey> : Entity<TKey>
+    public class AggregateRoot<TKey> : Entity<TKey>, IAggregateRoot
     {
         List<IDomainEvent> _changes = new();
 
@@ -41,8 +41,13 @@ namespace Framework.Core.Domain
         }
     }
 
+
+    public interface IAggregateRoot
+    {
+        ReadOnlyCollection<IDomainEvent> GetChanges();
+    }
     public interface IDomainEvent
     {
-
+        Guid Id { get; }
     }
 }

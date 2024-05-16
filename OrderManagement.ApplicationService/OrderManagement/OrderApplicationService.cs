@@ -1,5 +1,5 @@
 ﻿//using Framework.Core.Domain;
-//using OrdeManagement.Domain.OrderAggregate;
+//using OrderManagement.Domain.OrderAggregate;
 //using OrderManagement.DomainContract;
 
 //namespace OrderManagement.ApplicationService
@@ -18,7 +18,7 @@
 //        public void CreateOrder(CreateOrderDto createOrderDto)
 //        {
 //            //validate dto
-//            var order = OrdeManagement.Domain.Order.CreateOrder(createOrderDto, guidProvider);
+//            var order = OrderManagement.Domain.Order.CreateOrder(createOrderDto, guidProvider);
 
 //            _orderRepository.Save(order);
 //        }
@@ -31,7 +31,7 @@
 //        }
 //    }
 //}//using Framework.Core.Domain;
-//using OrdeManagement.Domain.OrderAggregate;
+//using OrderManagement.Domain.OrderAggregate;
 //using OrderManagement.DomainContract;
 
 //namespace OrderManagement.ApplicationService
@@ -50,7 +50,7 @@
 //        public void CreateOrder(CreateOrderDto createOrderDto)
 //        {
 //            //validate dto
-//            var order = OrdeManagement.Domain.Order.CreateOrder(createOrderDto, guidProvider);
+//            var order = OrderManagement.Domain.Order.CreateOrder(createOrderDto, guidProvider);
 
 //            _orderRepository.Save(order);
 //        }

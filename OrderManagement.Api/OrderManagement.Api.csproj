@@ -7,14 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OrdeManagement.Domain\OrdeManagement.Domain.csproj" />
+    <ProjectReference Include="..\Framework.Messaging.MassTransit\Framework.Messaging.MassTransit.csproj" />
+    <ProjectReference Include="..\OrdeManagement.Domain\OrderManagement.Domain.csproj" />
     <ProjectReference Include="..\OrderManagement.ApplicationService\OrderManagement.ApplicationService.csproj" />
-    <ProjectReference Include="..\OrderManagement.DomainContract\OrderManagement.DomainContract.csproj" />
+    <ProjectReference Include="..\OrderManagement.Contract\OrderManagement.Contract.csproj" />
     <ProjectReference Include="..\OrderManagement.Persistence.Ef\OrderManagement.Persistence.Ef.csproj" />
+    <ProjectReference Include="..\OrderManagement.Persistence.LiteDb\OrderManagement.Persistence.LiteDb.csproj" />
   </ItemGroup>
 
 </Project>

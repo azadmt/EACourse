@@ -1,4 +1,4 @@
-namespace OrderManagement.Api
+namespace OrderManagement.QueryApi
 {
     public class WeatherForecast
     {

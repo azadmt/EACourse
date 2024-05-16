@@ -1,5 +1,5 @@
-﻿using OrdeManagement.Domain;
-using OrdeManagement.Domain.OrderAggregate;
+﻿using OrderManagement.Domain;
+using OrderManagement.Domain.OrderAggregate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,21 +10,21 @@ namespace OrderManagement.Persistence.Ef
 {
     public class OrderRepository : IOrderRepository
     {
-        ApplicationDbContext dbContext;
+        private OrderManagementDbContext dbContext;
 
-        public OrderRepository(ApplicationDbContext dbContext)
+        public OrderRepository(OrderManagementDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
         public Order Get(Guid id)
         {
-            return dbContext.Orders.Single(x=>x.Id==id);
+            return dbContext.Orders.Single(x => x.Id == id);
         }
 
         public void Save(Order model)
         {
-            dbContext.Orders.Add(model);     
+            dbContext.Orders.Add(model);
             dbContext.SaveChanges();
         }
 
@@ -32,7 +32,6 @@ namespace OrderManagement.Persistence.Ef
         {
             dbContext.Orders.Update(model);
             dbContext.SaveChanges();
-
         }
     }
 }

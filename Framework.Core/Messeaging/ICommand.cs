@@ -4,4 +4,9 @@
     {
         bool Validate();
     }
+
+    public interface IEvent
+    {
+
+    }
 }
