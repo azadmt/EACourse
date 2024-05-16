@@ -28,6 +28,8 @@ namespace Framework.Core.Domain
 
     public class AggregateRoot<TKey> : Entity<TKey>, IAggregateRoot
     {
+       // [TimeStamp]
+        public  byte[] Version { get; set; }
         List<IDomainEvent> _changes = new();
 
         protected void AddChanges(IDomainEvent @event)
