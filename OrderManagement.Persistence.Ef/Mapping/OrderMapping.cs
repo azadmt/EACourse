@@ -14,6 +14,7 @@ namespace OrderManagement.Persistence.Ef.Mapping
         public void Configure(EntityTypeBuilder<Order> builder)
         {
             builder.HasKey(x => x.Id);
+            builder.Property(x => x.Version).IsRowVersion().IsConcurrencyToken();
             builder.Property(x => x.CustomerId).IsRequired();
             builder.Property(x => x.OrderDate).IsRequired();
             builder.OwnsOne(x => x.Total, b =>

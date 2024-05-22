@@ -12,17 +12,19 @@ namespace OrderManagement.QueryApi.EventHandler
         {
             this.dbContext = dbContext;
         }
+
         public async Task Consume(ConsumeContext<OrderCreatedEvent> context)
-        {           
+        {
             //context.Message.CustomerId
             var order = GetOrder(context.Message);
             // get customer info
             // get product info
             dbContext.Orders.Add(order);
-            //dbContext.OrderItem.AddRange(order.OrderItems);
-            await dbContext.SaveChangesAsync();          
-        }
 
+            //dbContext.OrderItem.AddRange(order.OrderItems);
+            await dbContext.SaveChangesAsync();
+            Console.WriteLine($"Consume {context.Message.OrderId} at  {DateTime.Now}");
+        }
 
         private Order GetOrder(OrderCreatedEvent orderCreatedEvent)
         {
@@ -42,10 +44,8 @@ namespace OrderManagement.QueryApi.EventHandler
                     ProductId = item.ProductId,
                     Quantity = item.Quantity,
                     UnitPrice = item.UnitPrice,
-                    ProductName=" p name",
-                    
+                    ProductName = " p name",
                 });
-
             }
             return order;
         }
