@@ -12,12 +12,14 @@ namespace CustomerManagement.Api.Controllers
         public CustomerController(ILogger<CustomerController> logger)
         {
             _logger = logger;
+             
         }
 
-        [HttpGet]
-        public CustomerModel Get()
+        [HttpGet("{id:guid}")]
+        public CustomerModel Get(Guid id)
         {
-            return new CustomerModel();
+            var db = new DB();
+            return db.GetCustomer(id);            
         }
     }
 }

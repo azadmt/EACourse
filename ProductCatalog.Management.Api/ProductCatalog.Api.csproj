@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Framework.Messaging.MassTransit\Framework.Messaging.MassTransit.csproj" />
+    <ProjectReference Include="..\ProductCatalog.Message\ProductCatalog.Message.csproj" />
   </ItemGroup>
 
 </Project>

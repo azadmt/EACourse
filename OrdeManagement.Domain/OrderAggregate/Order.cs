@@ -1,4 +1,5 @@
 ﻿using Framework.Core.Domain;
+using OrderManagement.Domain.ACL;
 using OrderManagement.DomainContract;
 using OrderManagement.DomainContract.Event;
 
@@ -8,8 +9,12 @@ namespace OrderManagement.Domain.OrderAggregate
     {
         private decimal maxLimitation = 1000000000;//TODO move to Config
 
-        public static Order CreateOrder(CreateOrderCommand createOrderDto, IGuidProvider guidProvider)
+        public static Order CreateOrder(CreateOrderCommand createOrderDto,Customer customer, IGuidProvider guidProvider)
         {
+            if(!customer.IsActive)
+            {
+                throw new Exception();
+            }
             Order order = new Order();
 
             order.Id = guidProvider.GetGuid();

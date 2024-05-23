@@ -1,5 +1,7 @@
+using Framework.Core.Messeaging;
 using Microsoft.AspNetCore.Mvc;
 using ProductCatalog.Management.Api.Model;
+using ProductCatalog.Message;
 
 namespace ProductCatalog.Management.Api.Controllers
 {
@@ -8,10 +10,12 @@ namespace ProductCatalog.Management.Api.Controllers
     public class ProductCatalogController : ControllerBase
     {
         private readonly ILogger<ProductCatalogController> _logger;
+        private readonly IEventBus eventBus;
 
-        public ProductCatalogController(ILogger<ProductCatalogController> logger)
+        public ProductCatalogController(ILogger<ProductCatalogController> logger, IEventBus eventBus)
         {
             _logger = logger;
+            this.eventBus = eventBus;
         }
 
         [HttpGet]
@@ -21,9 +25,12 @@ namespace ProductCatalog.Management.Api.Controllers
         }
 
         [HttpPost]
-        public ProductCatalogModel Post(ProductCatalogModel model)
+        public IActionResult Post(ProductCatalogModel model)
         {
-            return new ProductCatalogModel();
+            //TODO implement OutBox pattern
+            //store in db
+            eventBus.Publish(new ProductCatalogCreated() { Price = model.Price, ProductId = model.Id });
+            return Ok();
         }
     }
 }

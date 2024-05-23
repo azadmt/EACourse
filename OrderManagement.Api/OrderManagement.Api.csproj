@@ -20,8 +20,10 @@
     <ProjectReference Include="..\OrdeManagement.Domain\OrderManagement.Domain.csproj" />
     <ProjectReference Include="..\OrderManagement.ApplicationService\OrderManagement.ApplicationService.csproj" />
     <ProjectReference Include="..\OrderManagement.Contract\OrderManagement.Contract.csproj" />
+    <ProjectReference Include="..\OrderManagement.CustomerManagement.ACL\OrderManagement.CustomerManagement.ACL.csproj" />
     <ProjectReference Include="..\OrderManagement.Persistence.Ef\OrderManagement.Persistence.Ef.csproj" />
     <ProjectReference Include="..\OrderManagement.Persistence.LiteDb\OrderManagement.Persistence.LiteDb.csproj" />
+    <ProjectReference Include="..\ProductCatalog.Message\ProductCatalog.Message.csproj" />
   </ItemGroup>
 
 </Project>

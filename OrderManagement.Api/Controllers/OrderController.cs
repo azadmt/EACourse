@@ -2,6 +2,7 @@ using Framework.Core.Messeaging;
 using Microsoft.AspNetCore.Mvc;
 using OrderManagement.ApplicationService;
 using OrderManagement.DomainContract;
+using System.Net.Http;
 
 namespace OrderManagement.Api.Controllers
 {
@@ -10,12 +11,15 @@ namespace OrderManagement.Api.Controllers
     public class OrderController : ControllerBase
     {
         // OrderApplicationService orderApplicationService;
-        ICommandBus commandBus;
-        public OrderController(ICommandBus commandBus)
-        {
+        private ICommandBus commandBus;
 
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public OrderController(ICommandBus commandBus, IHttpClientFactory httpClientFactory)
+        {
             //this.orderApplicationService = orderApplicationService;
             this.commandBus = commandBus;
+            _httpClientFactory = httpClientFactory;
         }
 
         [HttpPost]

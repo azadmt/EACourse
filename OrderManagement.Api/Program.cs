@@ -7,6 +7,9 @@ using OrderManagement.DomainContract;
 using OrderManagement.Persistence.Ef;
 using MassTransit;
 using Framework.Messaging.MassTransit;
+using OrderManagement.CustomerManagement.ACL;
+using OrderManagement.ApplicationService.ACL;
+using OrderManagement.Api.MessageHandler;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,10 +28,13 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IGuidProvider, DefaultGuidProvider>();
 builder.Services.AddScoped<ICommandBus, CommandBus>();
 builder.Services.AddScoped<IEventBus, MassTransitBusImplementation>();
+builder.Services.AddScoped<ICustomerDataProvider, CustomerDataProvider>();
 
+
+builder.Services.AddHttpClient();
 builder.Services.AddMassTransit(x =>
 {
-    //x.AddConsumer<ProductCategoryCreatedEventHandler>();
+    x.AddConsumer<ProductCatalogCreatedHandler>();
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.ConfigureJsonSerializerOptions(options =>
