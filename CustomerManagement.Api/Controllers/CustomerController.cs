@@ -18,8 +18,8 @@ namespace CustomerManagement.Api.Controllers
         [HttpGet("{id:guid}")]
         public CustomerModel Get(Guid id)
         {
-            var db = new DB();
-            return db.GetCustomer(id);            
+         
+            return DB.GetCustomer(id);            
         }
     }
 }
