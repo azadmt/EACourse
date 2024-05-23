@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagement.Test", "Ord
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagement.Persistence.Ef", "OrderManagement.Persistence.Ef\OrderManagement.Persistence.Ef.csproj", "{CBE9E7E6-151F-48DA-9712-1086AC95FF5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Persistence.LiteDb", "OrderManagement.Persistence.LiteDb\OrderManagement.Persistence.LiteDb.csproj", "{AB33DF11-FA08-4D16-9E54-9F80352BED94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagement.Persistence.LiteDb", "OrderManagement.Persistence.LiteDb\OrderManagement.Persistence.LiteDb.csproj", "{AB33DF11-FA08-4D16-9E54-9F80352BED94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
