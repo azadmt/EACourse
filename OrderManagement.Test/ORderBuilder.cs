@@ -36,7 +36,7 @@ namespace OrderManagement.Test
 
         public Order Build()
         {
-            return Order.CreateOrder(new CreateOrderCommand { CustomerId = _customerId, Items = _orderItems }, _guidProvider);
+            return Order.CreateOrder(new CreateOrderCommand { CustomerId = _customerId, Items = _orderItems },new Domain.ACL.Customer(), _guidProvider);
         }
     }
 }

@@ -12,7 +12,9 @@ namespace CustomerManagement.Api.Controllers
             {
                 Id = new Guid("5B02A3A2-4CDD-4076-8DDE-BDCAE904CD05"),
                 Name = "Customer 1",
-                BirthDate = DateTime.Now.AddYears(-18)
+                BirthDate = DateTime.Now.AddYears(-18),
+
+                IsActive = true,
             });
         }
 

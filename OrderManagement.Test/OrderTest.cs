@@ -17,7 +17,7 @@ namespace OrderManagement.Test
         {
             var orderRepo = new OrderRepositoryFake();
             var orderId = Guid.NewGuid();
-            var sut = new CreateOrderCommandHandler(orderRepo, new GuidProviderFake(orderId), null);
+            var sut = new CreateOrderCommandHandler(orderRepo, new GuidProviderFake(orderId), null,new CustomerDataProviderFake());
             var customerId = Guid.NewGuid();
             var orderItems = new List<OrderItemDto>();
             orderItems.Add(new OrderItemDto() { ProductId = Guid.NewGuid(), Quantity = 10, UnitPrice = 5000 });
@@ -39,7 +39,7 @@ namespace OrderManagement.Test
                 new OrderItemDto() { ProductId = Guid.NewGuid(), Quantity = 10, UnitPrice = 5000 }
             };
             var existingOrder = GetCreateOrderCommand(customerId, orderItems);
-            orderRepo.Save(Order.CreateOrder(existingOrder, new GuidProviderFake(orderId)));
+            orderRepo.Save(Order.CreateOrder(existingOrder,new Domain.ACL.Customer(), new GuidProviderFake(orderId)));
 
             var newOrderItems = new List<OrderItemDto>();
             var newOrderItem = new OrderItemDto { ProductId = Guid.NewGuid(), Quantity = 10, UnitPrice = 400 };

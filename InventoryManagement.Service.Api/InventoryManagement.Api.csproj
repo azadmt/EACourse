@@ -15,4 +15,9 @@
     <Folder Include="Model\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\InventortyManagement.MessageContract\InventortyManagement.MessageContract.csproj" />
+    <ProjectReference Include="..\OrderManagement.DomainContract\OrderManagement.DomainContract.csproj" />
+  </ItemGroup>
+
 </Project>

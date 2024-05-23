@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Framework.Messaging.MassTransit\Framework.Messaging.MassTransit.csproj" />
+    <ProjectReference Include="..\InventortyManagement.MessageContract\InventortyManagement.MessageContract.csproj" />
     <ProjectReference Include="..\OrdeManagement.Domain\OrderManagement.Domain.csproj" />
     <ProjectReference Include="..\OrderManagement.ApplicationService\OrderManagement.ApplicationService.csproj" />
     <ProjectReference Include="..\OrderManagement.Contract\OrderManagement.Contract.csproj" />

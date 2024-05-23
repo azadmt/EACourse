@@ -1,4 +1,6 @@
 ﻿using Framework.Core.Domain;
+using OrderManagement.ApplicationService.ACL;
+using OrderManagement.Domain.ACL;
 using System;
 
 namespace OrderManagement.Test
@@ -15,6 +17,14 @@ namespace OrderManagement.Test
         public Guid GetGuid()
         {
             return _guid;
+        }
+    }
+
+    public class CustomerDataProviderFake : ICustomerDataProvider
+    {
+        public Customer GetCustomer(Guid id)
+        {
+            return null;
         }
     }
 }

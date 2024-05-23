@@ -9,9 +9,9 @@ namespace OrderManagement.Domain.OrderAggregate
     {
         private decimal maxLimitation = 1000000000;//TODO move to Config
 
-        public static Order CreateOrder(CreateOrderCommand createOrderDto,Customer customer, IGuidProvider guidProvider)
+        public static Order CreateOrder(CreateOrderCommand createOrderDto, Customer customer, IGuidProvider guidProvider)
         {
-            if(!customer.IsActive)
+            if (!customer.IsActive)
             {
                 throw new Exception();
             }
@@ -19,6 +19,7 @@ namespace OrderManagement.Domain.OrderAggregate
 
             order.Id = guidProvider.GetGuid();
             order.CustomerId = createOrderDto.CustomerId;
+            order.State = OrderState.Pending;
             order.AddOrderItems(createOrderDto.Items);
 
             order.AddChanges(
@@ -37,6 +38,7 @@ namespace OrderManagement.Domain.OrderAggregate
         public Guid CustomerId { get; private set; }
         public Money Total { get; private set; }
 
+        public OrderState State { get; private set; }
         public void AddOrderItems(List<OrderItemDto> orderItemDtos)
         {
             foreach (var item in orderItemDtos)
@@ -49,5 +51,29 @@ namespace OrderManagement.Domain.OrderAggregate
             }
             Total = _orderItems.Sum(x => x.UnitPrice * x.Quantity);
         }
+
+        public void Approve()
+        {
+            if (State != OrderState.Pending)
+                throw new Exception("just pending order can Approved!!!");
+            State = OrderState.Approved;
+            AddChanges(new OrderApprovedEvent { OrderId=Id});
+        }
+
+        public void Reject()
+        {
+            if (State != OrderState.Pending)
+                throw new Exception("just pending order can Rejected!!!");
+            State = OrderState.Rejected;
+            AddChanges(new OrderRejectedEvent { OrderId = Id });
+        }
+    }
+
+    public enum OrderState
+    {
+        Pending,
+        Approved,
+        Rejected,
+        Delivered
     }
 }
