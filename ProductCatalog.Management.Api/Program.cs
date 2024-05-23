@@ -1,3 +1,7 @@
+using Framework.Core.Messeaging;
+using Framework.Messaging.MassTransit;
+using MassTransit;
+
 namespace ProductCatalog.Management.Api
 {
     public class Program
@@ -7,7 +11,20 @@ namespace ProductCatalog.Management.Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.ConfigureEndpoints(context);
 
+                    cfg.Host("localhost", "ea1403", h =>
+                    {
+                        h.Username("guest");
+                        h.Password("guest");
+                    });
+                });
+            });
+            builder.Services.AddScoped<IEventBus, MassTransitBusImplementation>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -23,7 +40,6 @@ namespace ProductCatalog.Management.Api
             }
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

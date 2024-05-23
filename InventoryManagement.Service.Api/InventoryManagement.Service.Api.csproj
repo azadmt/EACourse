@@ -12,8 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Framework.Core\Framework.Core.csproj" />
-    <ProjectReference Include="..\Framework.Messaging.MassTransit\Framework.Messaging.MassTransit.csproj" />
+    <Folder Include="Model\" />
   </ItemGroup>
 
 </Project>
