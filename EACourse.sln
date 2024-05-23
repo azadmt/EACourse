@@ -55,7 +55,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductCatalog.Api", "Produ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerManagement.Api", "CustomerManagement.Api\CustomerManagement.Api.csproj", "{DFCC7428-C250-49D5-AC45-ABA88E736FE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Service.Api", "InventoryManagement.Service.Api\InventoryManagement.Service.Api.csproj", "{AC1659CC-2FAF-45E3-B6DE-8C799926727A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Api", "InventoryManagement.Service.Api\InventoryManagement.Api.csproj", "{AC1659CC-2FAF-45E3-B6DE-8C799926727A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCatalog.Message", "ProductCatalog.Message\ProductCatalog.Message.csproj", "{B4AAF1F5-D11B-43E0-9C27-A5C9ED9CDC55}"
 EndProject

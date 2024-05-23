@@ -25,7 +25,7 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IGuidProvider, DefaultGuidProvider>();
 builder.Services.AddScoped<ICommandBus, CommandBus>();
 builder.Services.AddScoped<IEventBus, MassTransitBusImplementation>();
-
+builder.Services.AddHttpClient();
 builder.Services.AddMassTransit(x =>
 {
     //x.AddConsumer<ProductCategoryCreatedEventHandler>();
