@@ -21,7 +21,7 @@ namespace Framework.Persistence.EF
                            return domainEvents;
                        })
                        .ToList();
-
+            OutboxUtil.CreateTableIfNotExist();
             StringBuilder sb = new StringBuilder();
             sb.Append($"INSERT INTO outbox (EventId,EventType,EventBody) VALUES ");
             var paramItems = new List<SqlParameter>();

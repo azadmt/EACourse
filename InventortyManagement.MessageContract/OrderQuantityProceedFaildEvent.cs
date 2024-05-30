@@ -1,7 +1,7 @@
 ﻿namespace InventortyManagement.MessageContract
 {
 
-    public class OrderQuantityProceedFaildEvent
+    public class AdjustmentProceedFaildEvent
     {
         public Guid OrderId { get; set; }
     }

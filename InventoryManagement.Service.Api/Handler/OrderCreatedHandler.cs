@@ -8,6 +8,10 @@ namespace InventoryManagement.Api.Handler
     {
         public Task Consume(ConsumeContext<OrderCreatedEvent> context)
         {
+            //TODO : use decorator or interceptor pattern for all consumers
+            if (DB.CheckMessageIdExist(context.Message.Id))
+                return Task.CompletedTask;
+
             var orderItems = context.Message.OrderItems;
             try
             {
@@ -20,11 +24,11 @@ namespace InventoryManagement.Api.Handler
             }
             catch (Exception ex)
             {
-                context.Publish(new OrderQuantityProceedFaildEvent() { OrderId = context.Message.OrderId });
+                context.Publish(new AdjustmentProceedFaildEvent() { OrderId = context.Message.OrderId });
 
-                throw;
+            //    throw;
             }
-            context.Publish(new OrderQuantityProceedSuccessEvent() { OrderId=context.Message.OrderId});
+            context.Publish(new AdjustmentProceedSuccessEvent() { OrderId=context.Message.OrderId});
             return Task.CompletedTask;  
         }
     }
@@ -32,6 +36,7 @@ namespace InventoryManagement.Api.Handler
     public static class DB
     {
         static List<Stock> stocks = new();
+        static List<Guid> inbox= new();
 
         static DB()
         {
@@ -44,9 +49,14 @@ namespace InventoryManagement.Api.Handler
             });
         }
 
-        public static Stock Get(Guid id)
+        public static Stock Get(Guid productId)
         {
-            return stocks.FirstOrDefault(x => x.Id == id);
+            return stocks.FirstOrDefault(x => x.ProductId == productId);
+        }
+
+        public static bool CheckMessageIdExist(Guid messageId)
+        {
+            return inbox.Any(x => x== messageId);
         }
     }
 }

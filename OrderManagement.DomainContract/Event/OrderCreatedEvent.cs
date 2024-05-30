@@ -21,18 +21,18 @@ namespace OrderManagement.DomainContract.Event
             OrderId = orderId;
             CustomerId = customerId;
             Total = total;
-            OrderItems = orderItems;
+            OrderItems = orderItems.ToList();
         }
-        [JsonInclude]
-        public Guid OrderId { get; private set; }
-        [JsonInclude]
-        public Guid CustomerId { get; private set; }
-        [JsonInclude]
+        //[JsonInclude]
+        public Guid OrderId { get;  set; }
+        //[JsonInclude]
+        public Guid CustomerId { get;  set; }
+        //[JsonInclude]
         public decimal Total { get; }
-        [JsonInclude]
-        public ReadOnlyCollection<OrderItemDto> OrderItems { get; private set; }
+     //   [JsonInclude]
+        public List<OrderItemDto> OrderItems { get;  set; }
 
-        [JsonInclude]
-        public Guid Id { get; private set; }
+       // [JsonInclude]
+        public Guid Id { get;  set; }
     }
 }

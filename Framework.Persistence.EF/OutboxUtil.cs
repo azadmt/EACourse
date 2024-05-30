@@ -4,6 +4,7 @@
     {
         public static void CreateTableIfNotExist()
         {
+            //TODO :Execute??
             var sql = @"IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Outbox]') AND type in (N'U'))
                     BEGIN
                         SET ANSI_NULLS ON

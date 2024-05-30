@@ -24,6 +24,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ICommandHandler<ChangeOrderOrderItemsCommand>, ChangeOrderOrderItemsCommandHandler>();
 builder.Services.AddScoped<ICommandHandler<CreateOrderCommand>, CreateOrderCommandHandler>();
+builder.Services.AddScoped<ICommandHandler<RejectOrderCommand>, RejectOrderCommandHandler>();
+builder.Services.AddScoped<ICommandHandler<ApproveOrderCommand>, ApproveOrderCommandHandler>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IGuidProvider, DefaultGuidProvider>();
 builder.Services.AddScoped<ICommandBus, CommandBus>();
@@ -35,6 +37,8 @@ builder.Services.AddHttpClient();
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<ProductCatalogCreatedHandler>();
+    x.AddConsumer<AdjustmentProceedFaildEventHandler>();
+    x.AddConsumer<AdjustmentProceedSuccessEventEvetHandler>();
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.ConfigureJsonSerializerOptions(options =>

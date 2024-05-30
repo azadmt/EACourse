@@ -5,15 +5,15 @@ using OrderManagement.DomainContract;
 
 namespace OrderManagement.Api.MessageHandler
 {
-    public class OrderQuantityProceedSuccessEvetHandler : IConsumer<OrderQuantityProceedSuccessEvent>
+    public class AdjustmentProceedSuccessEventEvetHandler : IConsumer<AdjustmentProceedSuccessEvent>
     {
         private readonly ICommandBus commandBus;
 
-        public OrderQuantityProceedSuccessEvetHandler(ICommandBus commandBus)
+        public AdjustmentProceedSuccessEventEvetHandler(ICommandBus commandBus)
         {
             this.commandBus = commandBus;
         }
-        public async Task Consume(ConsumeContext<OrderQuantityProceedSuccessEvent> context)
+        public async Task Consume(ConsumeContext<AdjustmentProceedSuccessEvent> context)
         {
             commandBus.Send(new ApproveOrderCommand { OrderId = context.Message.OrderId });
         }

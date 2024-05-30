@@ -5,15 +5,15 @@ using OrderManagement.DomainContract;
 
 namespace OrderManagement.Api.MessageHandler
 {
-    public class OrderQuantityProceedFaildEventHandler : IConsumer<OrderQuantityProceedFaildEvent>
+    public class AdjustmentProceedFaildEventHandler : IConsumer<AdjustmentProceedFaildEvent>
     {
         private readonly ICommandBus commandBus;
 
-        public OrderQuantityProceedFaildEventHandler(ICommandBus commandBus)
+        public AdjustmentProceedFaildEventHandler(ICommandBus commandBus)
         {
             this.commandBus = commandBus;
         }
-        public async Task Consume(ConsumeContext<OrderQuantityProceedFaildEvent> context)
+        public async Task Consume(ConsumeContext<AdjustmentProceedFaildEvent> context)
         {
             commandBus.Send(new RejectOrderCommand { OrderId=context.Message.OrderId});
         }
